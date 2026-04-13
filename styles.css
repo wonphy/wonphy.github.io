@@ -403,6 +403,12 @@ h2 {
   line-height: 1.7;
 }
 
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 @keyframes drift {
   from {
     transform: rotate(0deg);
