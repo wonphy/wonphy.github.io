@@ -1,15 +1,15 @@
 :root {
-  --bg: #f7f1e7;
-  --bg-accent: #efe2c7;
-  --surface: rgba(255, 252, 247, 0.72);
-  --surface-strong: #fffaf2;
-  --text: #1b1a17;
-  --muted: #5b564b;
-  --line: rgba(27, 26, 23, 0.12);
-  --primary: #0f766e;
-  --primary-strong: #0b5e58;
-  --secondary: #c96d42;
-  --shadow: 0 20px 60px rgba(63, 43, 21, 0.12);
+  --bg: #e9f2ff;
+  --bg-accent: #cfe1ff;
+  --surface: rgba(246, 250, 255, 0.76);
+  --surface-strong: #f8fbff;
+  --text: #0d1b33;
+  --muted: #4a5d80;
+  --line: rgba(19, 53, 120, 0.14);
+  --primary: #185adb;
+  --primary-strong: #1148af;
+  --secondary: #4da3ff;
+  --shadow: 0 20px 60px rgba(17, 52, 117, 0.14);
   --radius: 28px;
 }
 
@@ -27,9 +27,9 @@ body {
   font-family: "Space Grotesk", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(201, 109, 66, 0.18), transparent 32%),
-    radial-gradient(circle at top right, rgba(15, 118, 110, 0.22), transparent 28%),
-    linear-gradient(180deg, #fbf6ed 0%, var(--bg) 42%, #efe5d6 100%);
+    radial-gradient(circle at top left, rgba(77, 163, 255, 0.28), transparent 30%),
+    radial-gradient(circle at top right, rgba(24, 90, 219, 0.24), transparent 26%),
+    linear-gradient(180deg, #f7fbff 0%, var(--bg) 44%, #dce9ff 100%);
 }
 
 body::before {
@@ -38,8 +38,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(27, 26, 23, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(27, 26, 23, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(17, 72, 175, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 72, 175, 0.035) 1px, transparent 1px);
   background-size: 32px 32px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 90%);
 }
@@ -64,7 +64,7 @@ body::before {
   padding: 20px 24px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(255, 250, 242, 0.75);
+  background: rgba(248, 251, 255, 0.78);
   position: sticky;
   top: 16px;
   z-index: 10;
@@ -142,6 +142,7 @@ h1 {
 
 h1 span {
   color: var(--secondary);
+  text-shadow: 0 8px 30px rgba(77, 163, 255, 0.24);
 }
 
 .lede {
@@ -199,10 +200,11 @@ h1 span {
 .signal-card,
 .orbit-card,
 .stats-card,
+.summary-card,
 .timeline-item,
 .contact-card {
-  background: rgba(255, 250, 242, 0.76);
-  border: 1px solid rgba(27, 26, 23, 0.08);
+  background: rgba(248, 251, 255, 0.78);
+  border: 1px solid rgba(19, 53, 120, 0.09);
   border-radius: 24px;
 }
 
@@ -227,41 +229,158 @@ h1 span {
 }
 
 .orbit-card {
-  min-height: 260px;
+  min-height: 320px;
   overflow: hidden;
   position: relative;
 }
 
-.orbit {
+.capability-map {
   position: relative;
   width: 100%;
-  height: 190px;
-  margin-top: 24px;
-  border: 1px dashed rgba(15, 118, 110, 0.28);
-  border-radius: 50%;
-  animation: drift 18s linear infinite;
+  min-height: 240px;
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 26px;
+  background:
+    linear-gradient(rgba(24, 90, 219, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 90, 219, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(77, 163, 255, 0.12), transparent 42%);
+  background-size: 22px 22px, 22px 22px, auto;
 }
 
-.orbit span {
+.capability-map::before,
+.capability-map::after {
+  content: "";
   position: absolute;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 74px;
-  padding: 10px 14px;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
   border-radius: 999px;
-  background: var(--surface-strong);
-  border: 1px solid var(--line);
-  font-size: 0.92rem;
-  box-shadow: 0 10px 30px rgba(27, 26, 23, 0.08);
+  pointer-events: none;
 }
 
-.orbit span:nth-child(1) { top: -10px; left: calc(50% - 37px); }
-.orbit span:nth-child(2) { top: 28%; right: -12px; }
-.orbit span:nth-child(3) { bottom: 8%; right: 12%; }
-.orbit span:nth-child(4) { bottom: -10px; left: calc(50% - 48px); }
-.orbit span:nth-child(5) { bottom: 32%; left: -8px; }
-.orbit span:nth-child(6) { top: 18%; left: 12%; }
+.capability-map::before {
+  width: 160px;
+  height: 160px;
+  border: 1px solid rgba(24, 90, 219, 0.16);
+}
+
+.capability-map::after {
+  width: 236px;
+  height: 236px;
+  border: 1px dashed rgba(24, 90, 219, 0.18);
+}
+
+.capability-core {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.96), rgba(225, 237, 255, 0.9));
+  border: 1px solid rgba(24, 90, 219, 0.18);
+  box-shadow:
+    0 20px 50px rgba(24, 90, 219, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.capability-kicker {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.capability-core strong {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.capability-node {
+  position: absolute;
+  width: 158px;
+  padding: 14px 16px;
+  border-radius: 20px;
+  background: rgba(248, 251, 255, 0.92);
+  border: 1px solid rgba(24, 90, 219, 0.14);
+  box-shadow: 0 16px 32px rgba(24, 90, 219, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.capability-node::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(90deg, rgba(24, 90, 219, 0.28), rgba(77, 163, 255, 0.1));
+  z-index: -1;
+}
+
+.node-title {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.node-copy {
+  display: block;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.node-platform {
+  top: 10px;
+  left: 20px;
+}
+
+.node-platform::before {
+  right: -54px;
+  top: 50%;
+  width: 54px;
+  height: 1px;
+}
+
+.node-data {
+  top: 18px;
+  right: 10px;
+}
+
+.node-data::before {
+  left: -56px;
+  top: 50%;
+  width: 56px;
+  height: 1px;
+}
+
+.node-ai {
+  bottom: 18px;
+  left: 12px;
+}
+
+.node-ai::before {
+  right: -62px;
+  top: 50%;
+  width: 62px;
+  height: 1px;
+}
+
+.node-product {
+  bottom: 6px;
+  right: 20px;
+}
+
+.node-product::before {
+  left: -50px;
+  top: 50%;
+  width: 50px;
+  height: 1px;
+}
 
 .section {
   margin-top: 24px;
@@ -283,6 +402,27 @@ h2 {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 20px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.summary-card {
+  padding: 24px;
+}
+
+.summary-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.summary-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
 }
 
 .about-copy p {
@@ -319,7 +459,7 @@ h2 {
 
 .chip {
   border: 1px solid var(--line);
-  background: rgba(255, 250, 242, 0.7);
+  background: rgba(248, 251, 255, 0.7);
   border-radius: 999px;
   min-height: 42px;
   padding: 0 16px;
@@ -351,7 +491,7 @@ h2 {
 
 .timeline-item:hover {
   transform: translateY(-3px);
-  border-color: rgba(201, 109, 66, 0.32);
+  border-color: rgba(24, 90, 219, 0.3);
 }
 
 .timeline-item.is-hidden {
@@ -421,6 +561,7 @@ h2 {
 @media (max-width: 920px) {
   .hero-grid,
   .about-grid,
+  .summary-grid,
   .timeline-item,
   .contact-card {
     grid-template-columns: 1fr;
@@ -439,6 +580,33 @@ h2 {
     gap: 14px;
     font-size: 0.95rem;
   }
+
+  .capability-map {
+    min-height: 420px;
+  }
+
+  .capability-core {
+    top: 50%;
+  }
+
+  .capability-node {
+    width: calc(50% - 18px);
+  }
+
+  .node-platform,
+  .node-data {
+    top: 14px;
+  }
+
+  .node-ai,
+  .node-product {
+    bottom: 14px;
+  }
+
+  .node-platform { left: 0; }
+  .node-data { right: 0; }
+  .node-ai { left: 0; }
+  .node-product { right: 0; }
 }
 
 @media (max-width: 640px) {
@@ -470,6 +638,31 @@ h2 {
 
   .contact-card {
     align-items: flex-start;
+  }
+
+  .capability-map {
+    min-height: 520px;
+    padding: 10px;
+  }
+
+  .capability-map::before,
+  .capability-map::after,
+  .capability-node::before {
+    display: none;
+  }
+
+  .capability-core {
+    position: relative;
+    inset: auto;
+    transform: none;
+    margin: 0 auto 16px;
+  }
+
+  .capability-node {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin-bottom: 12px;
   }
 }
 
