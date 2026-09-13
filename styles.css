@@ -514,6 +514,30 @@ h2 {
   line-height: 1.55;
 }
 
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 22px;
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.project-link span {
+  transition: transform 180ms ease;
+}
+
+.project-link:hover,
+.project-link:focus-visible {
+  text-decoration: underline;
+}
+
+.project-link:hover span,
+.project-link:focus-visible span {
+  transform: translate(2px, -2px);
+}
+
 .about-copy p {
   margin: 0 0 18px;
   color: var(--muted);
