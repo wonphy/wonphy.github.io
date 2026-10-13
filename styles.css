@@ -879,6 +879,17 @@ h2 {
     gap: 12px;
   }
 
+  .topbar-links {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    font-size: 0.82rem;
+  }
+
+  .topbar-links a {
+    white-space: nowrap;
+  }
+
   h1 {
     font-size: clamp(2.6rem, 16vw, 4.2rem);
   }
